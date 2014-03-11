@@ -1,9 +1,5 @@
-#class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
-#	created
-#	modified
-#	title
-#	slug
-#	description
-#	status
-#	activate_date
-#	deactivate_date
+from django.contrib import admin
+
+from .models import Page
+
+admin.site.register(Page)
