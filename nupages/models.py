@@ -20,10 +20,10 @@ class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
 	"""
 	content = models.TextField(blank=True)
 
-    class Meta:
-        verbose_name = _('Page')
-        verbose_name_plural = _('Pages')
-        ordering = ('-created',)
+	class Meta:
+		verbose_name = _('Page')
+		verbose_name_plural = _('Pages')
+		ordering = ('-created',)
 
-    def get_absolute_url(self):
-        return reverse('nupages:detail', kwargs={'slug': self.slug})
+	def get_absolute_url(self):
+		return reverse('nupages:detail', kwargs={'slug': self.slug})
