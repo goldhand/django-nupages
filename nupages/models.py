@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
+from django.utils import timezone
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
 from django_extensions.db.models import TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel
+
+from .managers import PageManager
 
 
 class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
@@ -21,6 +24,8 @@ class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
 	"""
 	content = models.TextField(blank=True)
 	custom_template = models.BooleanField(default=False)
+
+	objects = PageManager()
 
 	class Meta:
 		verbose_name = _('Page')

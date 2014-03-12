@@ -4,7 +4,7 @@ from .views import PageList, PageDetail
 
 
 
-urlpatterns = patterns('nupages.views',
+urlpatterns = patterns('',
 	url(r'^$', PageList.as_view(), name='list'),
 	# allows slugs to contain [_, -]
 	#url(r'^(?P<slug>[-_\w]+)/$', PageDetail.as_view(), name='detail'),

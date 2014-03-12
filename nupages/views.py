@@ -5,6 +5,7 @@ from .models import Page
 
 class PageList(generic.ListView):
 	model = Page
+	queryset = Page.objects.published()
 	paginate_by = 10
 
 
