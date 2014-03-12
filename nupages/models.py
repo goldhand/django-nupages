@@ -20,6 +20,7 @@ class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
 		deactivate_date
 	"""
 	content = models.TextField(blank=True)
+	custom_template = models.BooleanField(default=False)
 
 	class Meta:
 		verbose_name = _('Page')
