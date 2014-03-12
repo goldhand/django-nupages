@@ -11,11 +11,14 @@ try:
                 "ENGINE": "django.db.backends.sqlite3",
             }
         },
-        ROOT_URLCONF="nupages.urls",
+        ROOT_URLCONF="tests.test_urls",
         INSTALLED_APPS=[
             "django.contrib.auth",
             "django.contrib.contenttypes",
             "django.contrib.sites",
+            'django.contrib.messages',
+            'django.contrib.staticfiles',
+            "django_extensions",
             "nupages",
         ],
         SITE_ID=1,
