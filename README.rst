@@ -61,13 +61,14 @@ Cookiecutter-project Integration
     pip install -r requirements/local.txt
     npm install
     createdb PROJECT_NAME
-    python PROJECT_NAME/manage.py syndb
+    python PROJECT_NAME/manage.py syncdb
     python PROJECT_NAME/manage.py migrate
 
 
 ### nupages Setup
 
 .. code-block:: bash
+
     pip install git+https://github.com/goldhand/django-nupages.git
     # eventually will be pip install django-nupages
 
