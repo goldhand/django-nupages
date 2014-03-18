@@ -71,6 +71,7 @@ Cookiecutter-project Integration
 
     pip install git+https://github.com/goldhand/django-nupages.git
     # eventually will be pip install django-nupages
+    pip install django_extensions
 
 # add 'nupages' to PROJECT_NAME/config/settings.py in THIRD_PARTY_APPS (lines 47 - 51)
 
