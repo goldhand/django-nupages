@@ -74,6 +74,7 @@ Cookiecutter-project Integration
 # add 'nupages' to PROJECT_NAME/config/settings.py in THIRD_PARTY_APPS (lines 47 - 51)
 
 .. code-block:: python
+
     THIRD_PARTY_APPS = (
         'south',  # Database migration helpers:
         'crispy_forms',  # Form layouts
