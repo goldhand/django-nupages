@@ -39,7 +39,7 @@ coverage:
 	open htmlcov/index.html
 
 docs:
-	rm -f docs/django-nupages.rst
+	rm -f docs/nupages.rst
 	rm -f docs/modules.rst
 	sphinx-apidoc -o docs/ nupages
 	$(MAKE) -C docs clean

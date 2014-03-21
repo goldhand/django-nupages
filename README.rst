@@ -25,14 +25,11 @@ Install django-nupages::
 
     pip install django-nupages
 
-Then use it in a project::
-
-    import django-nupages
 
 Cookiecutter-project Integration
 --------------------------------
 
-### Initial Setup
+Initial Setup:
 
 .. code-block:: bash
 
@@ -40,7 +37,7 @@ Cookiecutter-project Integration
     pip install cookiecutter
     cookiecutter https://github.com/pydanny/cookiecutter-django.git
 
-### Github Setup
+Github Setup:
 
 .. code-block:: bash
 
@@ -52,7 +49,7 @@ Cookiecutter-project Integration
     git remote add origin git@github.com:USER_NAME/REPO_NAME.git
     git push origin master
 
-### Development Setup
+Development Setup:
 
 .. code-block:: bash
 
@@ -65,15 +62,14 @@ Cookiecutter-project Integration
     python PROJECT_NAME/manage.py migrate
 
 
-### nupages Setup
+nupages Setup:
 
 .. code-block:: bash
 
-    pip install git+https://github.com/goldhand/django-nupages.git
-    # eventually will be pip install django-nupages
-    pip install django_extensions
+    pip install django-nupages
 
-# add 'nupages' to PROJECT_NAME/config/settings.py in THIRD_PARTY_APPS (lines 47 - 51)
+
+add 'nupages' to PROJECT_NAME/config/settings.py in THIRD_PARTY_APPS (lines 47 - 51)
 
 .. code-block:: python
 
@@ -84,7 +80,7 @@ Cookiecutter-project Integration
     +   'nupages',
     )
 
-# add nupages url namespace to PROJECT_NAME/config/urls.py to the bottom of urlpatterns (lines 13 - 33)
+add nupages url namespace to PROJECT_NAME/config/urls.py to the bottom of urlpatterns (lines 13 - 33)
 
 .. code-block:: python
 
@@ -111,7 +107,7 @@ Cookiecutter-project Integration
     
     ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# sync the database
+sync the database
 
 .. code-block:: bash
 
@@ -120,7 +116,7 @@ Cookiecutter-project Integration
     grunt serve # open 127.0.0.1:8000 in browser
 
 
-### Production Setup
+Production Setup:
     
 .. code-block:: bash
 

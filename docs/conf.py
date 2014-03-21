@@ -237,7 +237,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'django-nupages', u'django-nupages Documentation',
-   u'Will Farley', 'django-nupages', 'One line description of project.',
+   u'Will Farley', 'django-nupages', 'Pages for django.',
    'Miscellaneous'),
 ]
 
