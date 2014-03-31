@@ -43,6 +43,8 @@ class PageFilter(generic.ListView):
 	def get_queryset(self):
 		self.tag = get_object_or_404(Tag, slug=self.kwargs['tag_slug'])
 		queryset = self.tag.page_set.published()
+		if not self.request.user.is_authenticated():
+			queryset = queryset.filter(public=True)
 		return queryset
 
 	def get_context_data(self, *args, **kwargs):
