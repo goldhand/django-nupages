@@ -1,0 +1,34 @@
+{% extends "nupages/base.html" %}
+
+{% block tag_nav %}
+	{% if tags %}
+		{% for tag in tags %}
+		<li>
+			<a href="{{ tag.get_absolute_url }}">
+				{{ tag.title|title }}
+			</a>
+		</li>
+		{% endfor %}
+	{% endif %}
+{% endblock tag_nav %}
+
+{% block content %}
+
+	{% if tag %}
+		<h2>{{ tag.title|title }}</h2>
+	{% endif %}
+
+	{% block page_content %}
+		{% for page in page_list %}
+			<h3 class="page-header">
+				<a href="{% url 'nupages:detail' slug=page.slug %}">
+					{{ page.title }}
+				</a>
+			</h3>
+			<p>
+				{{ page.content|truncatewords:50 }}
+			</p>
+		{% endfor %}
+	{% endblock page_content %}
+
+{% endblock content %}

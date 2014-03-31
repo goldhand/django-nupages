@@ -1,8 +1,0 @@
-{% extends "nupages/base.html" %}
-
-{% block title %}{{ page.title }}{% endblock title %}
-
-{% block content %}
-<h2 class="page-header"><a href="{% url 'nupages:detail' slug=page.slug %}">{{ page.title }}</a></h2>
-<p>{{ page.content }}</p>
-{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "nupages/list.html" %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block page_content %}
+	<h2 class="page-header">
+		<a href="{% url 'nupages:detail' slug=page.slug %}">
+			{{ page.title }}
+		</a>
+	</h2>
+	<p>{{ page.content }}</p>	
+
+	{% if page.tags.all %}
+	<ul class="list-inline">
+		<li>Tags:</li>
+		{% for tag in page.tags.all %}
+			<li>
+				<a href="{{ tag.get_absolute_url }}">
+					{{ tag.title }}
+				</a>
+			</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock page_content %}
