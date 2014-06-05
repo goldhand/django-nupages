@@ -9,6 +9,7 @@ try:
         DATABASES={
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
+                "NAME": "test.db"
             }
         },
         ROOT_URLCONF="tests.test_urls",
@@ -19,6 +20,7 @@ try:
             'django.contrib.messages',
             'django.contrib.staticfiles',
             "django_extensions",
+            "positions",
             "nupages",
         ],
         SITE_ID=1,

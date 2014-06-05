@@ -14,6 +14,7 @@ import unittest
 
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+from django.contrib.sites.models import Site
 
 from nupages import models
 from nupages import views
@@ -26,13 +27,15 @@ class TestNupages(unittest.TestCase):
 		title="Test Page", 
 		description="yes, this is only a test", 
 		content="yes, this is only a test",
-		custom_template=False):
+		custom_template="",
+		site=Site.objects.create(domain="127.0.0.1:8000", name="127.0.0.1:8000")):
 		return models.Page.objects.create(
 			title=title, 
 			description=description,
 			content=content, 
 			custom_template=custom_template,
-			created=timezone.now())
+			created=timezone.now(),
+			site=site)
 
 	def test_page_creation(self):
 		p = self.create_page()

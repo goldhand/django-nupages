@@ -8,3 +8,7 @@ History
 
 * First release on PyPI.
 
+0.1.6 (2014-05-05)
+++++++++++++++++++
+
+* Adds Multi-tenant middleware
