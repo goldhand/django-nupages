@@ -37,6 +37,7 @@ setup(
     include_package_data=True,
     install_requires=[
 	'django-extensions==1.3.3',
+    'django-positions==0.5.1',
     ],
     license="BSD",
     zip_safe=False,

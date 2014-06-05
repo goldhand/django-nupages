@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from django.utils import timezone
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.db.models import permalink
 from django.utils.translation import ugettext_lazy as _
-from django.core.urlresolvers import reverse
+from django.contrib.sites.models import Site
 
 from django_extensions.db.models import TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel
+import positions
 
 from .managers import PageManager
 
@@ -24,17 +24,23 @@ class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
 		deactivate_date
 	"""
 	content = models.TextField(blank=True)
-	custom_template = models.BooleanField(default=False)
+	custom_template = models.CharField(max_length=255, blank=True, 
+		help_text="Example: 'nupages/page.html'. If this isn't provided, the system will use 'nupages/page_detail.html'.")
+	site = models.ForeignKey(Site)
+	order = positions.PositionField()
 
 	objects = PageManager()
 
 	class Meta:
 		verbose_name = _('Page')
 		verbose_name_plural = _('Pages')
-		ordering = ('-created',)
+		ordering = ['order',]
+		get_latest_by = 'order'
+		order_with_respect_to = 'site'
 
 	def __unicode__(self):
 		return u'%s' % self.title
 
+	@permalink
 	def get_absolute_url(self):
-		return reverse('nupages:detail', kwargs={'slug': self.slug})
+		return 'nupages:detail', (), {'slug': self.slug}
