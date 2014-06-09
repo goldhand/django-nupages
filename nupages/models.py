@@ -34,8 +34,8 @@ class Page(TimeStampedModel, TitleSlugDescriptionModel, ActivatorModel):
 	class Meta:
 		verbose_name = _('Page')
 		verbose_name_plural = _('Pages')
-		ordering = ['order',]
-		get_latest_by = 'order'
+		ordering = ['_order',]
+		get_latest_by = '_order'
 		order_with_respect_to = 'site'
 
 	def __unicode__(self):

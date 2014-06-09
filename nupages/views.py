@@ -1,6 +1,49 @@
 from django.views import generic
 from django.template.loader import select_template
+from django.shortcuts import render
+
 from .models import Page
+
+
+def home_page(request):
+    page_base_template_names = ["nupages/base.html",]
+    page_template_names = ["nupages/index.html",]
+    page_list = Page.objects.published()
+    page = None
+    context = {}
+    if hasattr(request, 'site_id'):
+        # filter page_list by active site_id
+        page_list = page_list.filter(site_id=request.site_id)
+        # use site's base template if it exists
+        page_base_template_names.insert(0, 
+            "nupages/tenants/{}/base.html".format(request.site_id))
+
+        # use site's index.html instead of default nupages index if it exists
+        page_template_names.insert(0, 
+            "nupages/tenants/{}/index.html".format(request.site_id))
+        try:
+            page = Page.objects.published().get(site_id=request.site_id, 
+            slug__istartswith='home')
+
+        except Page.DoesNotExist:
+            print 'Does not exist'
+            
+        except Page.MultipleObjectsReturned:
+            print 'multiple'
+
+    if page:
+        context['page'] = page
+        # use a custom template if specified
+        if page.custom_template:
+            page_template_names.insert(0, page.custom_template)
+
+    context['page_list'] = page_list
+    # select correct base template
+    page_base_template = select_template(page_base_template_names)
+    context['base_template'] = page_base_template
+
+    return render(request, page_template_names, context)
+
 
 
 class PageList(generic.ListView):
@@ -75,5 +118,4 @@ class PageDetail(generic.DetailView):
                 ["nupages/tenants/{}/base.html".format(self.request.site_id), 
                 page_base_template])
         context['base_template'] = page_base_template
-        print page_base_template
         return context

@@ -1,0 +1,8 @@
+{% extends base_template %}
+
+{% block content %}
+{% for page in page_list %}
+<h2 class="page-header"><a href="{% url 'nupages:detail' slug=page.slug %}">{{ page.title }}</a></h2>
+<p>{{ page.content }}</p>
+{% endfor %}
+{% endblock content %}
