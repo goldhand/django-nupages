@@ -12,3 +12,9 @@ History
 ++++++++++++++++++
 
 * Adds Multi-tenant middleware
+
+0.1.7 (2014-05-09)
+++++++++++++++++++
+
+* adds support for creating site-specific Home pages
+* adds Page admin 
